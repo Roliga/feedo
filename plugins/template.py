@@ -16,14 +16,14 @@ def check(url):
     # For example check if domain name contains a certain string:
     # parsed = urlparse(url)
     # return "somesite.com" in parsed.netloc
-    pass
+    return False
 
 
 # Takes a url to a page, and returns the query that the generate function wants
 def query(url):
     # Example that simply gets the query string from the url passed
     # return urlparse(url).query
-    pass
+    return ""
 
 
 # Takes a query and returns a utf-8 encoded string containing the feed
