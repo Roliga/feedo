@@ -5,14 +5,16 @@ from importplug import import_plugins
 from time import asctime
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
+from os import getcwd
 
 import traceback
 
-plugins = import_plugins("/home/roliga/stuff/mine/programming/python/feeds-modularized/plugins")
-
 HOST_NAME = 'localhost'  # !!!REMEMBER TO CHANGE THIS!!!
 LOCATION = 'http://localhost:9000/'
+PLUGINS_PATH = getcwd() + '/plugins'
 PORT_NUMBER = 9000  # Maybe set this to 9000.
+
+plugins = import_plugins(PLUGINS_PATH)
 
 
 class MyHandler(BaseHTTPRequestHandler):
