@@ -8,13 +8,7 @@ from urllib.parse import urlparse
 from os import getcwd
 
 import traceback
-
-HOST_NAME = 'localhost'  # !!!REMEMBER TO CHANGE THIS!!!
-LOCATION = 'http://localhost:9000/'
-PLUGINS_PATH = getcwd() + '/plugins'
-PORT_NUMBER = 9000  # Maybe set this to 9000.
-
-plugins = import_plugins(PLUGINS_PATH)
+import argparse
 
 
 class MyHandler(BaseHTTPRequestHandler):
@@ -49,7 +43,7 @@ class MyHandler(BaseHTTPRequestHandler):
                         # Usable plugin found
                         # Send redirect to proper feed url
 
-                        redir = LOCATION + name + '?' + plugin.query(url_query)
+                        redir = args.location + name + '?' + plugin.query(url_query)
 
                         s.send_response(301)
                         s.send_header('Location', redir)
@@ -68,12 +62,38 @@ class MyHandler(BaseHTTPRequestHandler):
             traceback.print_exc()
 
 
-if __name__ == '__main__':
-    server = HTTPServer(('', PORT_NUMBER), MyHandler)
-    print(asctime(), "Server Starts - %s:%s" % (HOST_NAME, PORT_NUMBER))
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        pass
-    server.server_close()
-    print(asctime(), "Server Stops - %s:%s" % (HOST_NAME, PORT_NUMBER))
+# Argument parsing
+parser = argparse.ArgumentParser()
+
+parser.add_argument('--host',
+                    help='Hostname/address to listen on',
+                    default='localhost')
+parser.add_argument('--port',
+                    help='Port to use for incoming connections',
+                    type=int,
+                    default=80)
+parser.add_argument('--plugins',
+                    help='Directory to look for plugins in',
+                    default=getcwd() + '/plugins')
+parser.add_argument('--location',
+                    help='Full location/URL where Feedo is available',
+                    default='http://localhost/')
+
+args = parser.parse_args()
+
+
+# Import plugins
+plugins = import_plugins(args.plugins)
+
+server = HTTPServer((args.host, args.port), MyHandler)
+
+# Run server
+print(asctime(), 'Starting Feedo..')
+
+try:
+    server.serve_forever()
+except KeyboardInterrupt:
+    pass
+
+server.server_close()
+print(asctime(), 'Feedo closing!')
