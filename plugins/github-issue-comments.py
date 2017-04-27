@@ -49,9 +49,16 @@ def generate(query):
 
     # Get latest comments
     url_comments = json_issue['comments_url']
-    url_latest = head(url_comments).links['last']['url']
+    links_comments = head(url_comments).links
+
+    if 'last' in links_comments:
+        url_latest = links_comments['last']['url']
+    else:
+        url_latest = url_comments
+
     json_comments = get(url_latest).json()
 
+    # Generate feed items
     for comment in json_comments:
         feed.add_item(
             title='Comment by ' + comment['user']['login'],
