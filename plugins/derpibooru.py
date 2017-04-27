@@ -12,7 +12,8 @@ import feedgenerator
 # plugin can handle the url passed as an argument
 def check(url):
     parsed = urlparse(url)
-    return "derpibooru.org" in parsed.netloc
+    return "derpibooru.org" in parsed.netloc and \
+           parsed.path.startswith('/search')
 
 
 # Takes a url to a page, and returns the query that the generate function wants
