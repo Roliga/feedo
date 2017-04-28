@@ -1,15 +1,16 @@
 <html>
 	<head>
 		<title>Feedo!</title>
+
 		<style type="text/css">
 body {
 	background-color: #181818;
-}
-#title {
-	margin-top: 100px;
 	text-align: center;
 	color: #585858;
 	font-family: Sans;
+}
+#title {
+	margin-top: 100px;
 }
 form {
 	margin: auto auto;
@@ -39,6 +40,7 @@ input[type="submit"]:hover {
 	background-color: #963D3A;
 	color: #D99F9D;
 }
+
 input[type="submit"] {
 	font-weight: bold;
 	border: 0;
@@ -46,14 +48,47 @@ input[type="submit"] {
 	background-color: #AB4642;
 	transition: 0.1s;
 }
-		
+
+details summary:hover {
+	color: #686868;
+}
+
+details summary {
+	text-align: center;
+}
+
+details {
+	margin: auto;
+	width: 500px;
+	text-align: left;
+}
+
+a {
+	color: #686868;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #888888;
+}
 		</style>
 	</head>
 	<body>
-		<div id="title"><h1>Feedo</h1>Enter a url bellow to generate a feed!</div>
+		<div id="title">
+			<h1>Feedo</h1>
+			<p>Enter a url bellow to generate a feed!</p>
+		</div>
 		<form action="/" method="GET" accept-charset="UTF-8">
 			<input name="url" placeholder="URL" type="text" />
 			<input value="Feedo plz!" type="submit" />
 		</form>
+		<details>
+			<summary>Supported sites</summary>
+			<ul>
+				<li>Derpibooru search: derpibooru.org/search?*</li>
+				<li>Comments on github issue: github.com/*/*/issues/*</li>
+			</ul>
+		</details>
+		<p>Feedo is on <a href="https://github.com/Roliga/feedo">Github</a>!</p>
 	</body>
 </html>
