@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Feedo!</title>
+		<style type="text/css">
+body {
+	background-color: #181818;
+}
+#title {
+	margin-top: 100px;
+	text-align: center;
+	color: #585858;
+	font-family: Sans;
+}
+form {
+	margin: auto auto;
+	margin-top: 50px;
+	width: 500px;
+}
+input {
+	margin: 20px auto;
+	padding: 15px;
+	width: 100%;
+	display: block;
+	border-radius: 3px;
+}
+input[type="text"]:focus {
+	opacity: 1.0;
+}
+
+input[type="text"] {
+	opacity: 0.8;
+	background-color: #181818;
+	border: 2px solid #383838;
+	color: #484848;
+	transition: 0.1s;
+}
+
+input[type="submit"]:hover {
+	background-color: #963D3A;
+	color: #D99F9D;
+}
+input[type="submit"] {
+	font-weight: bold;
+	border: 0;
+	color: #ECCFCE;
+	background-color: #AB4642;
+	transition: 0.1s;
+}
+		
+		</style>
+	</head>
+	<body>
+		<div id="title"><h1>Feedo</h1>Enter a url bellow to generate a feed!</div>
+		<form action="/" method="GET" accept-charset="UTF-8">
+			<input name="url" placeholder="URL" type="text" />
+			<input value="Feedo plz!" type="submit" />
+		</form>
+	</body>
+</html>
