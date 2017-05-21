@@ -83,7 +83,11 @@ def generate(query):
     feed_title = tree.get_element_by_id('band-name-location')\
         .find_class('title')[0].text_content()
     # A description for the feed
-    feed_description = tree.get_element_by_id('bio-text').text_content()
+    bio_element = tree.get_element_by_id('bio-text', None)
+    if bio_element is None:
+        feed_description = ""
+    else:
+        feed_description = bio_element.text_content()
     # Link to where the feed was generated from
     feed_link = url_base
 
