@@ -102,8 +102,9 @@ def generate(query):
         # print('  ' + album.artwork)
 
         desc = '<a href="' + album.link + '">' + \
-                '<img src="' + album.artwork + '">' + \
-                '</a>'
+               '<img src="' + album.artwork + '" width="500px">' + \
+               '</img>' + \
+               '</a>'
 
         feed.add_item(
             title=album.title,
