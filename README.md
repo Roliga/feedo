@@ -41,3 +41,10 @@ Planned sites
 -------------
 
 * [Soundcloud](https://soundcloud.com)
+	- Artists uploads (with/without reposts)
+* [Steam](https://store.steampowered.com/)
+	- Salte status of game
+	- Early access status
+	- Released status
+* [PriceSpy](https://pricespy.co.uk/)
+	- Price changes of a product (including where the price changed, to allow filtering out unwanted stores)
