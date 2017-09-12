@@ -62,7 +62,7 @@ def generate(query):
     for comment in json_comments:
         feed.add_item(
             title='Comment by ' + comment['user']['login'],
-            link=comment['url'],
+            link=comment['html_url'],
             author_name=comment['user']['login'],
             author_link=comment['user']['html_url'],
             pubdate=datetime.strptime(comment['created_at'], '%Y-%m-%dT%H:%M:%SZ'),
