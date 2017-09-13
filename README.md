@@ -36,6 +36,8 @@ Supported sites
 	- Searches, URLs like `https://derpibooru.org/search?[query]`
 * [Github](https://github.com)
 	- Comments on issues, URLs like `https://github.com/[author]/[project]/issues/[issue id]`
+* [Twitch](https://twitch.tv/)
+	- Channel videos, URLs like `https://twitch.tv/[channel]/videos/[video type]`
 
 Planned sites
 -------------
