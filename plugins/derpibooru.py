@@ -52,15 +52,15 @@ def generate(query):
         descript += '<b>Source:</b> <a href="' + post["source_url"] + '">' +\
             post["source_url"] + '</a><br>'
 
-        postUrl = "https://derpibooru.org/" + post["id"]
+        postUrl = "https://derpibooru.org/" + str(post["id"])
         date = datetime.strptime(post["created_at"], '%Y-%m-%dT%H:%M:%S.%fZ')
         tags = post["tags"].split(sep=', ')
 
         feed.add_item(
-            title=post["id"],
+            title=str(post["id"]),
             link=postUrl,
             pubdate=date,
-            unique_id=post["id"],
+            unique_id=str(post["id"]),
             description=descript,
             categories=tags)
 
