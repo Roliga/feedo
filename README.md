@@ -40,6 +40,8 @@ Supported sites
 	- Channel videos, URLs like `https://twitch.tv/[channel]/videos/[video type]`
 * [Soundcloud](https://soundcloud.com)
 	- Artists uploads, no reposts, URLs like `https://soundcloud.com/[artist]`
+* [Trello](https://trello.com)
+	- Boards and cards, URLs like `https://trello.com/[b or c]/[id]/[name]`
 
 Planned sites
 -------------
