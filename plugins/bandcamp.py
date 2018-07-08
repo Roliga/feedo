@@ -58,7 +58,7 @@ def check(url):
     if len(grid) > 0:
         return True
     else:
-        if tree.get_element_by_id('name-section') is not None:
+        if tree.get_element_by_id('name-section', None) is not None:
             return True
 
     return False
