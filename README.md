@@ -38,12 +38,12 @@ Supported sites
 	- Comments on issues, URLs like `https://github.com/[author]/[project]/issues/[issue id]`
 * [Twitch](https://twitch.tv/)
 	- Channel videos, URLs like `https://twitch.tv/[channel]/videos/[video type]`
+* [Soundcloud](https://soundcloud.com)
+	- Artists uploads, no reposts, URLs like `https://soundcloud.com/[artist]`
 
 Planned sites
 -------------
 
-* [Soundcloud](https://soundcloud.com)
-	- Artists uploads (with/without reposts)
 * [Steam](https://store.steampowered.com/)
 	- Salte status of game
 	- Early access status
