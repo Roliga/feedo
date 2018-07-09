@@ -8,7 +8,7 @@ from datetime import datetime
 from urllib.parse import urlparse
 import re
 from requests import get
-import shlex
+from shlex import shlex
 # from json import loads
 # from urllib.request import urlopen
 
@@ -27,7 +27,7 @@ def api_request(path, params = {}):
 # plugin can handle the url passed as an argument
 def check(url):
     parsed = urlparse(url)
-    regex = re.compile('^/.+/(|tracks|reposts)')
+    regex = re.compile('^/.+/?(|tracks|reposts)')
 
     return "soundcloud.com" in parsed.netloc and regex.match(parsed.path) is not None
 
@@ -85,7 +85,11 @@ def generate(query):
     json_tracks = get_tracks(json_user['id'])
 
     for track in json_tracks['collection']:
-        description = '<p><img src="' + track['artwork_url'] + '" ></p>'
+        description = ''
+
+        if track['artwork_url']:
+            description = '<p><img src="' + track['artwork_url'] + '" ></p>'
+
         if track['description']:
             description = description + track['description']
 
@@ -95,7 +99,11 @@ def generate(query):
         categories = ['soundcloud', track['genre']]
 
         if track['tag_list']:
-            categories += shlex.split(track['tag_list'])
+            lex = shlex(track['tag_list'], posix=True)
+            lex.whitespace_split = True
+            lex.commenters = ''
+            lex.quotes = '"'
+            categories += list(lex)
 
         feed.add_item(
             title=track['title'],
