@@ -49,8 +49,9 @@ def generate(query):
         descript += "<b>Size:</b> " + size + "<br>"
 
         # Add a link to the source url of the post
-        descript += '<b>Source:</b> <a href="' + post["source_url"] + '">' +\
-            post["source_url"] + '</a><br>'
+        if post["source_url"]:
+            descript += '<b>Source:</b> <a href="' + post["source_url"] + '">' +\
+                post["source_url"] + '</a><br>'
 
         postUrl = "https://derpibooru.org/" + str(post["id"])
         date = datetime.strptime(post["created_at"], '%Y-%m-%dT%H:%M:%S.%fZ')
