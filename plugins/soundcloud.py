@@ -50,7 +50,7 @@ def get_tracks(user_id):
 
     while len(json_tracks) < 20:
         json = get(url).json()
-        json_tracks.update(json['collection'])
+        json_tracks += json['collection']
 
         if 'next_href' in json:
             url = json['next_href']
