@@ -40,16 +40,17 @@ def query(url):
 
 def get_tracks(user_id):
     url = 'users/' + str(user_id) + '/tracks'
-    json_tracks = api_request(url, { 'linked_partitioning' : 1 })
+    json = api_request(url, { 'linked_partitioning' : 1 })
+    json_tracks = json['collection']
 
-    if 'next_href' in json_tracks:
-        url = json_tracks['next_href']
+    if 'next_href' in json:
+        url = json['next_href']
     else:
         return json_tracks
 
     while len(json_tracks) < 20:
         json = get(url).json()
-        json_tracks.update(json)
+        json_tracks.update(json['collection'])
 
         if 'next_href' in json:
             url = json['next_href']
@@ -84,7 +85,7 @@ def generate(query):
     # Get sounds
     json_tracks = get_tracks(json_user['id'])
 
-    for track in json_tracks['collection']:
+    for track in json_tracks:
         description = ''
 
         if track['artwork_url']:
