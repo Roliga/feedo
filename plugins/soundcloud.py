@@ -96,7 +96,10 @@ def generate(query):
         pubdate = datetime.strptime(track['created_at'], '%Y/%m/%d %H:%M:%S +0000')
         updateddate = datetime.strptime(track['last_modified'], '%Y/%m/%d %H:%M:%S +0000')
 
-        categories = ['soundcloud', track['genre']]
+        categories = ['soundcloud']
+
+        if track['genre']:
+            categories += [track['genre']]
 
         if track['tag_list']:
             lex = shlex(track['tag_list'], posix=True)
