@@ -70,7 +70,7 @@ def generate(query):
     json_user = api_request('resolve', { 'url' : 'https://soundcloud.com/' + query_user })
 
     # A title/name for the whole feed
-    feed_title = 'Tracks by ' + json_user['username']
+    feed_title = json_user['username']
     # A description for the feed
     # Optional and maybe not too relevant in all cases
     feed_description = json_user['description']
